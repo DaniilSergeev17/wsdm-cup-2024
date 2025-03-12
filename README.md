@@ -26,7 +26,7 @@ cfg = {
 }
 ```
 
-We also tried 'Qwen/Qwen2.5-7B-Instruct', 'deepseek-ai/DeepSeek-R1-Distill-Qwen-7B', 'sfairXC/FsfairX-Gemma2-RM-v0.1', and also tried using my model from LMSYS as a best model, however this all gave worse results.
+We also tried `Qwen/Qwen2.5-7B-Instruct`, `deepseek-ai/DeepSeek-R1-Distill-Qwen-7B`, `sfairXC/FsfairX-Gemma2-RM-v0.1`, and also tried using my model from LMSYS as a best model, however this all gave worse results.
 
 ### Code
 
