@@ -46,7 +46,7 @@ I've tried a lot of datasets:
 - public wsdm extra data
 
 However, since I was learning over the checkpoint from LMSYS, the model was already seeing data from LMSYS, 33k, ORPO, Ultrafeedback and adding them to the train dataset did not improve the score. 
-I also made 600000 pseudolabels, however adding them as soft labels to the train dataset didn't help either.
+I also made 600000 [pseudolabels](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/train/pseudolabel.ipynb), however adding them as soft labels to the train dataset didn't help either.
 So we only used data from WSDM as dataset.
 
 ### Our config
@@ -82,7 +82,6 @@ model.score = torch.nn.Sequential(
 ### Code
 
 You can find our train notebook [there](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/train/train-notebook.ipynb).
-You can find our pseudolabel notebook [there](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/train/pseudolabel.ipynb).
 
 ## Stage 3 (Inference)
 
