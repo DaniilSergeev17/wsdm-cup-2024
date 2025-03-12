@@ -90,3 +90,7 @@ We used 2 models at inference - one was trained on triples (prompt, answer_a, an
 ### Code
 
 You can find our inference notebook [there](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/inference/wsdm-inference-2-models.ipynb).
+
+## Certificate
+
+![certificate](certificate.png)
