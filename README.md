@@ -8,7 +8,7 @@
 
 A 8-bit quantized 'google/gemma-2-9b-it' model from the top-5 LMSYS solution was used as a base model, config:
 
-'''python
+```python
 cfg = {
     "_load_in_4bit": False,
     "_load_in_8bit": True,
@@ -24,7 +24,7 @@ cfg = {
     "load_in_8bit": True,
     "quant_method": "bitsandbytes"
 }
-'''
+```
 
 We also tried 'Qwen/Qwen2.5-7B-Instruct', 'deepseek-ai/DeepSeek-R1-Distill-Qwen-7B', 'sfairXC/FsfairX-Gemma2-RM-v0.1', and also tried using my model from LMSYS as a best model, however this all gave worse results.
 
@@ -69,7 +69,7 @@ So we only used data from WSDM as dataset.
 
 ### Custom head
 
-'''python
+```python
 model.score = torch.nn.Sequential(
     torch.nn.Dropout(config.head_dropout),
     torch.nn.Linear(config.hdim, config.hdim // 2),
@@ -77,7 +77,7 @@ model.score = torch.nn.Sequential(
     torch.nn.GELU(),
     torch.nn.Linear(config.hdim // 2, config.num_labels),
 ).cuda().bfloat16()
-'''
+```
 
 ### Code
 
