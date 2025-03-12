@@ -6,7 +6,7 @@
 
 ## Stage 1 (Model Selection + Quantization)
 
-A 8-bit quantized 'google/gemma-2-9b-it' model from the top-5 LMSYS solution was used as a base model, config:
+A 8-bit quantized `google/gemma-2-9b-it` model from the top-5 LMSYS solution was used as a base model, config:
 
 ```python
 cfg = {
