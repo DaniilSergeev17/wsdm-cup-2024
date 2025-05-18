@@ -1,12 +1,12 @@
 # WSDM Cup - Multilingual Chatbot Arena (Kaggle Silver Medal)
 
-## Description
+## Описание
 
-> This competition challenges you to predict which responses users will prefer in a head-to-head battle between chatbots powered by large language models (LLMs). You'll be given a dataset of conversations from the Chatbot Arena, where different LLMs generate answers to user prompts. By developing a winning machine learning model, you'll help improve how chatbots interact with humans and ensure they better align with human preferences.
+> В этом соревновании нам предстояло предсказать, какие ответы предпочтут пользователи в битве лицом к лицу между чат-ботами, работающими на базе large language models (LLM). Нам был предоставлен набор данных о разговорах с чат-ботами, где разные LLM генерируют ответы на запросы пользователей. Разработав выигрышную модель машинного обучения, мы помогли улучшить взаимодействие чат-ботов с людьми и добиться того, чтобы они лучше соответствовали человеческим предпочтениям.
 
-## Stage 1 (Model Selection + Quantization)
+## Этап 1 (Выбор модели + квантование)
 
-A 8-bit quantized `google/gemma-2-9b-it` model from the top-5 LMSYS solution was used as a base model, config:
+В качестве базовой модели была использована 8-битная квантизированная модель "google/gemma-2-9 бит" из топ-5 решений LMSYS, конфигурация:
 
 ```python
 cfg = {
@@ -26,17 +26,17 @@ cfg = {
 }
 ```
 
-We also tried `Qwen/Qwen2.5-7B-Instruct`, `deepseek-ai/DeepSeek-R1-Distill-Qwen-7B`, `sfairXC/FsfairX-Gemma2-RM-v0.1`, and also tried using my model from LMSYS as a base model, however this all gave worse results.
+Мы также попробовали `Qwen/Qwen2.5-7B-Instruct`, `deepseek-ai/DeepSeek-R1-Distill-Qwen-7B`, `sfairXC/FsfairX-Gemma2-RM-v0.1`, а также попытались использовать свою модель из LMSYS в качестве базовой модели, однако это не помогло. все это давало худшие результаты.
 
 ### Code
 
-You can find our quantization notebook [there](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/quantize/base-quantize.ipynb).
+Вы можете ознакомиться с нашим блокнотом для квантования [здесь](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/quantize/base-quantize.ipynb).
 
-## Stage 2 (Training + Pseudolabeling)
+## Этап 2 (Обучение + Pseudo labeling)
 
-### Data
+### Данные
 
-I've tried a lot of datasets:
+Мы перепробовал множество наборов данных:
 
 - ultrafeedback
 - 33k extra from lmsys
@@ -45,11 +45,11 @@ I've tried a lot of datasets:
 - pseudolabels from top-3 lmsys team
 - public wsdm extra data
 
-However, since I was learning over the checkpoint from LMSYS, the model was already seeing data from LMSYS, 33k, ORPO, Ultrafeedback and adding them to the train dataset did not improve the score. 
-I also made 600000 [pseudolabels](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/train/pseudolabel.ipynb), however adding them as soft labels to the train dataset didn't help either.
-So we only used data from WSDM as dataset.
+Однако, поскольку мы обучались через контрольную точку из LMSYS, модель уже видела данные из LMSYS, 33k, ORPO, Ultrafeedback, и добавление их в набор данных train не улучшило результат.
+Мы также сгенерировали 600000 [pseudolabels](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/train/pseudolabel.ipynb), однако добавление их в качестве дополнительных меток в набор данных train также не помогло.
+Таким образом, в качестве набора данных мы использовали только данные из WSDM.
 
-### Our config
+### Наша конфигурация
 
 - 8bit qlora
 - truncation_side='leftside'
@@ -67,7 +67,7 @@ So we only used data from WSDM as dataset.
 - bf16 compute dtype
 - custom head
 
-### Custom head
+### Кастомная голова
 
 ```python
 model.score = torch.nn.Sequential(
@@ -81,15 +81,15 @@ model.score = torch.nn.Sequential(
 
 ### Code
 
-You can find our train notebook [there](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/train/train-notebook.ipynb).
+Вы можете ознакомиться с нашим блокнотом [здесь](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/train/train-notebook.ipynb).
 
-## Stage 3 (Inference)
+## Этап 3 (Инференс)
 
-We used 2 models at inference - one was trained on triples (prompt, answer_a, answer_b) and the other on (prompt, answer_b, answer_a). We also inferred them on regular and inverted triples.
+На инференсе мы использовали 2 модели - одна была обучена на тройках (prompt, answer_a, answer_b), а другая - на (prompt, answer_b, answer_a). Мы также выводили их на обычных и инвертированных тройках.
 
 ### Code
 
-You can find our inference notebook [there](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/inference/wsdm-inference-2-models.ipynb).
+Вы можете ознакомиться с нашим блокнотом для инференса [здесь](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/inference/wsdm-inference-2-models.ipynb).
 
 ## Certificate
 
