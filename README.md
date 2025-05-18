@@ -91,6 +91,29 @@ model.score = torch.nn.Sequential(
 
 Вы можете ознакомиться с нашим блокнотом для инференса [здесь](https://github.com/l1ghtsource/wsdm-cup-2024/blob/main/inference/wsdm-inference-2-models.ipynb).
 
+## Технологии и инструменты
+### Технологии машинного обучения
+- Fine-tuning больших языковых моделей (LLM)
+- Sequence Classification
+- Parameter-Efficient Fine-Tuning
+- 8-bit и 4-bit квантизация
+- Data handling
+### Языки программирования
+- Python 3.12
+### Библиотеки и фреймворки
+- transformers, peft, bitsandbytes, accelerate, datasets, pandas, numpy, pyarrow, chardet, charset-normalizer, ftfy, torch, sklearn, wandb
+
+## Команда проекта
+- [Кирилл Рыжичкин](https://github.com/l1ghtsource) (RnD)
+- [Данила Малинин](https://github.com/MALINAYAGODA) (RnD)
+- [Даниил Сергеев](https://github.com/DaniilSergeev17) (RnD)
+
+## Финальный текст-заключени
+Мы проделали огромный пласт работ, чтобы получить такое качество и выиграть серебро. Благодаря нашему решения можно автоматически сравнивать качество генерации ответа двух моделей между собой. Это позволит ускорить разработку новых моделей и уменьшить человека часы.
+
+В конце соревнования мы узнали, что можно было использовать `Qwen/Qwen2.5-14B-Instruct`, что привело бы нас к золоту.
+![certificate](certificate.png)
+
 ## Certificate
 
 ![certificate](certificate.png)
