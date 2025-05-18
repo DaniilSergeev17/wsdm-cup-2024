@@ -116,4 +116,4 @@ model.score = torch.nn.Sequential(
 
 ## Certificate
 
-![certificate](certificate.png)
+![certificate](my_certificate.png)
